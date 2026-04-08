@@ -1,0 +1,24 @@
+{
+    "name": "abc-execute",
+    "description": "ABC execution loop: decompose a goal, execute tasks, review progress. Inspired by PaperclipAI's hierarchical task alignment and Hormozi's bias to action.",
+    "roles": [
+        {
+            "role": "abc-decomposer",
+            "prompt": "Decompose the goal into a structured Kanboard project. Use abc_decompose to create the project with tasks and subtasks. Follow the ABC methodology: max 8 tasks, max 5 subtasks each, every task has a deliverable.",
+            "maxIterations": 30
+        },
+        {
+            "role": "abc-executor",
+            "prompt": "Execute the highest-priority tasks from the Kanboard project created in the previous stage. Use abc_next to pick tasks, execute them, mark subtasks done, add completion comments, and close tasks. Ship fast, iterate faster.",
+            "maxIterations": 48
+        },
+        {
+            "role": "reviewer",
+            "prompt": "Review the project progress using abc_status and abc_review. Check: Are tasks truly complete? Is the goal being achieved? Are there stalled or overdue items? Respond APPROVED if the goal is met or all tasks are complete. Otherwise provide specific feedback on what needs to change."
+        }
+    ],
+    "termination": {
+        "type": "evaluation_bound",
+        "value": "APPROVED"
+    }
+}

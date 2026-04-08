@@ -1,0 +1,69 @@
+{
+    "name": "carmelosantana/coqui-toolkit-abc-co",
+    "description": "ABC (Action Breakdown & Creation) toolkit for Coqui — Paperclip-style task decomposition with Hormozi-inspired bias to action, powered by Kanboard",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Carmelo Santana"
+        }
+    ],
+    "keywords": [
+        "php-agents",
+        "coqui",
+        "toolkit",
+        "kanboard",
+        "task-management",
+        "task-decomposition",
+        "abc",
+        "action-bias"
+    ],
+    "require": {
+        "php": "^8.4",
+        "carmelosantana/coqui-toolkit-kanboard": "*"
+    },
+    "require-dev": {
+        "carmelosantana/php-agents": "^0.7",
+        "pestphp/pest": "^3.0",
+        "phpstan/phpstan": "^2.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "CarmeloSantana\\CoquiToolkitAbcCo\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "CarmeloSantana\\CoquiToolkitAbcCo\\Tests\\": "tests/"
+        }
+    },
+    "config": {
+        "optimize-autoloader": true,
+        "sort-packages": true,
+        "allow-plugins": {
+            "pestphp/pest-plugin": true
+        }
+    },
+    "scripts": {
+        "test": "pest",
+        "analyse": "phpstan analyse"
+    },
+    "extra": {
+        "php-agents": {
+            "toolkits": [
+                "CarmeloSantana\\CoquiToolkitAbcCo\\AbcToolkit"
+            ],
+            "description": "ABC — Action Breakdown & Creation: aggressive task decomposition and execution with Kanboard integration",
+            "credentials": {
+                "KANBOARD_URL": "Kanboard JSON-RPC endpoint URL (e.g. https://kanboard.example.com/jsonrpc.php)",
+                "KANBOARD_USERNAME": "Kanboard username — use 'jsonrpc' for application API, or your username for user API",
+                "KANBOARD_API_TOKEN": "Kanboard API token — application token from Settings, or personal access token for user API"
+            },
+            "skills": "skills",
+            "roles": "config/roles",
+            "loops": "config/loops"
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}
