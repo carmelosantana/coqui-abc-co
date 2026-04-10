@@ -119,9 +119,9 @@ final readonly class StatusTool
                 'date_due' => is_array($t) ? ($t['date_due'] ?? '') : '',
             ], array_slice($overdueTasks, 0, 10)),
             'stalled_tasks' => array_map(fn(array $t): array => [
-                'id' => $t['id'] ?? null,
-                'title' => $t['title'] ?? '',
-                'days_stalled' => $t['days_stalled'] ?? 0,
+                'id' => $t['id'],
+                'title' => $t['title'],
+                'days_stalled' => $t['days_stalled'],
             ], array_slice($stalledTasks, 0, 10)),
             'recommendations' => $recommendations,
         ];
