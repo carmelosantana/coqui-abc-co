@@ -178,7 +178,7 @@ test('review tool rejects unknown action', function () {
     $result = $tool->execute(['action' => 'invalid', 'project_id' => 1]);
 
     expect($result->status->value)->toBe('error');
-    expect($result->content)->toContain('Unknown action');
+    expect($result->content)->toContain('Parameter "action" must be one of');
 });
 
 test('decompose tool rejects unknown action', function () {
@@ -188,5 +188,5 @@ test('decompose tool rejects unknown action', function () {
     $result = $tool->execute(['action' => 'invalid']);
 
     expect($result->status->value)->toBe('error');
-    expect($result->content)->toContain('Unknown action');
+    expect($result->content)->toContain('Parameter "action" must be one of');
 });
